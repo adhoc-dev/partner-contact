@@ -18,5 +18,9 @@ table_renames = [
 
 
 def pre_init_hook(cr):
-    openupgrade.rename_models(cr, model_renames)
-    openupgrade.rename_tables(cr, table_renames)
+    # only run init script if migrated db
+    if (
+            openupgrade.table_exists(cr, 'afip_document_type') and
+            not openupgrade.table_exists(cr, 'res_partner_id_category')):
+        openupgrade.rename_models(cr, model_renames)
+        openupgrade.rename_tables(cr, table_renames)
