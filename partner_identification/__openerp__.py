@@ -26,4 +26,5 @@
     'website': 'https://odoo-community.org/',
     'license': 'AGPL-3',
     'installable': True,
+    'pre_init_hook': 'pre_init_hook',
 }
